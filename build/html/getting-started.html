@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Initial Setup &mdash; Windows Installer for Unity 2022 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script src="_static/jquery.js"></script>
+        <script src="_static/underscore.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/language_data.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Creating your first installer" href="first-installer.html" />
+    <link rel="prev" title="The Key Benefits of MSI" href="msi.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+            <a href="index.html" class="icon icon-home"> Windows Installer for Unity
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption"><span class="caption-text">Overview:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="index.html">Windows Installer for Unity: Installer Technology made easy!</a></li>
+<li class="toctree-l1"><a class="reference internal" href="msi.html">The Key Benefits of MSI</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Getting Started:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Initial Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="first-installer.html">Creating your first installer</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Windows Installer for Unity</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+      <li>Initial Setup</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/getting-started.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <div class="section" id="initial-setup">
+<h1>Initial Setup<a class="headerlink" href="#initial-setup" title="Permalink to this headline"></a></h1>
+<p>This document will aid you in setting up <a class="reference external" href="https://assetstore.unity.com/packages/slug/215960">Windows Installer for Unity</a>, but you can also just follow the steps in the WiX for Unity Wizard, which will guide you through the necessary steps. It will automatically open, once you have imported the asset from the Asset Store, but you can always open the wizard by going to Window -&gt; WiX -&gt; Wix for Unity Wizard or alternatively, by using the keyboard shortcut <kbd class="kbd docutils literal notranslate">Alt</kbd> + <kbd class="kbd docutils literal notranslate">w</kbd>.</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="_images/menubar.jpg"><img alt="WiX for Unity Wizard in Unity's menu bar" src="_images/menubar.jpg" style="width: 100%;" /></a>
+</div>
+</div></blockquote>
+<p>When you’ve imported the package for the first time, it is necessary to install WiX. WiX is an open source framework that builds Windows installation packages (.msi) from XML source code. It is installed as a <a class="reference external" href="https://dotnet.microsoft.com/en-us/download">.NET Tool</a>, which is why having .NET 3.1 or higher is one of the system requirements.</p>
+<ol class="arabic">
+<li><p><strong>Installing the .NET SDK</strong></p>
+<p>In the wizard, select ‘Install recommended version’ and download the newest version of the .NET SDK.
+At the time of this writing, the recommended version is <a class="reference external" href="https://dotnet.microsoft.com/en-us/download">.NET 6.0</a></p>
+<p>This step is only necessary, if you don’t already have a suitable version of .NET SDK installed. If you do, the wizard will not prompt you to install it and start at the next step instead.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/wizard_0.jpg"><img alt="WiX Wizard .NET Installation" src="_images/wizard_0.jpg" style="width: 60%;" /></a>
+</div>
+</li>
+<li><p><strong>Installing WiX</strong></p>
+<p>Next, hit the ‘Install WiX’ button and WiX will be installed in the background.</p>
+<div class="figure align-center">
+<a class="reference internal image-reference" href="_images/wizard_1.jpg"><img alt="WiX Wizard WiX Installation" src="_images/wizard_1.jpg" style="width: 60%;" /></a>
+</div>
+</li>
+<li><p><strong>Profit</strong></p></li>
+</ol>
+<p>That’s it. After these steps you’ve successfully installed WiX and are good to go. The main screen of the wizard should look something like this:</p>
+<blockquote>
+<div><div class="figure align-center">
+<a class="reference internal image-reference" href="_images/wizard_2.jpg"><img alt="WiX Wizard" src="_images/wizard_2.jpg" style="width: 60%;" /></a>
+</div>
+</div></blockquote>
+<p>In the next chapter we’ll go through the steps to create an installer for your project.</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="msi.html" class="btn btn-neutral float-left" title="The Key Benefits of MSI" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="first-installer.html" class="btn btn-neutral float-right" title="Creating your first installer" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2022, Doji Technologies.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
