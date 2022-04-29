@@ -95,9 +95,20 @@ product instead of dealing with installer technology.</p>
 <div class="section" id="does-my-application-need-an-installer">
 <h2>Does my application need an installer?<a class="headerlink" href="#does-my-application-need-an-installer" title="Permalink to this headline"></a></h2>
 <blockquote>
-<div><p>The truth is, most traditional Unity applications won’t need one. For gaming applications, you will probably end up uploading to a store like Steam, which already handles packaging and dstribution.</p>
+<div><p>The truth is, most traditional Unity applications won’t need one. For gaming applications, you will probably end up uploading to a store like Steam, which already handles packaging and distribution.</p>
 <p>Having an installer is mostly useful for enterprise applications, which are nowadays increasingly created with Unity.</p>
 <p>You can read more about the benefits of MSI for this use case <a class="reference internal" href="msi.html"><span class="doc">here</span></a>.</p>
+</div></blockquote>
+</div>
+<div class="section" id="does-having-an-installer-remove-the-windows-security-popup-that-can-appear-when-running-a-unity-application-on-a-different-computer">
+<h2>Does having an installer remove the Windows Security popup that can appear when running a Unity application on a different computer?<a class="headerlink" href="#does-having-an-installer-remove-the-windows-security-popup-that-can-appear-when-running-a-unity-application-on-a-different-computer" title="Permalink to this headline"></a></h2>
+<blockquote>
+<div><p>Having an installer does <strong>not</strong> solve the issue that <a class="reference external" href="https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview">Microsoft SmartScreen</a> might notify its users with a message that your app is potentially unsafe. The general advice on how to solve this is, that you should both:</p>
+<ul class="simple">
+<li><p>Code-sign your application by purchasing a certificate from a <a class="reference external" href="https://docs.microsoft.com/en-us/windows-hardware/drivers/dashboard/get-a-code-signing-certificate#extended-validation-code-signing-certificates">Certificate Authority</a>.</p></li>
+<li><p>Get your application out to enough users so SmartScreen eventually considers it safe.</p></li>
+</ul>
+<p>According to  <a class="reference external" href="https://forum.unity.com/threads/windows-10-alert-on-some-machines.427969/">this thread</a> the message can still pop up even when you’ve code-signed your application. So signing alone seems to be not enough.</p>
 </div></blockquote>
 </div>
 </div>
