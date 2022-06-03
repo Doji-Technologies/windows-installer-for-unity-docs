@@ -1,7 +1,7 @@
 Creating your first installer
 =============================
 
-Once WiX is setup, creating our first installer is only a few clicks away. We have a few options for this.
+Once WiX is set up, creating our first installer is only a few clicks away. We have a few options for this.
 
 #. **Manually creating the installer**
 
@@ -13,8 +13,37 @@ Once WiX is setup, creating our first installer is only a few clicks away. We ha
 
 #. **Integration into your own build pipeline**
 
-   While the option above shows, that the process of generating an installer can be completely automated, you might not want to create an installer for every build you do. In case you have your own pipeline and want to control exactly when an installer is created, WiX for Unity can be controlled through editor scripts as well. Creating an installer is as simple as calling
+   While the option above shows, that the process of generating an installer can be completely automated, you might not want to create an installer for every build you do. In case you use custom build scripts and want to control exactly when an installer is created, WiX for Unity can be controlled through editor scripts as well. Creating an installer is as simple as calling
 
-   .. code-block:: java 
+   .. code-block:: java
     
-       WiX.CreateInstaller(buildPath, msiPath);
+      WiX.CreateInstaller(report);
+
+   where *'report'* is a `BuildReport`_ object that Unity passes to scripts implementing the `IPostprocessBuildWithReport`_ interface. A complete sample might look like this:
+
+   .. code-block:: java
+
+      using UnityEditor;
+      using UnityEditor.Build;
+      using UnityEditor.Build.Reporting;
+
+      public class MyCustomBuildProcessor : IPostprocessBuildWithReport {
+
+          public int callbackOrder { get { return 0; } }
+
+          public void OnPostprocessBuild(BuildReport report) {
+              if (!WiX.IsPlatformSupported) {
+                  return;
+              }
+
+              if (report.summary.platform != BuildTarget.StandaloneWindows &&
+                  report.summary.platform != BuildTarget.StandaloneWindows64) {
+                  return;
+              }
+
+              WiX.CreateInstaller(report);
+          }
+      }
+
+   .. _IPostprocessBuildWithReport: https://docs.unity3d.com/ScriptReference/Build.IPostprocessBuildWithReport.OnPostprocessBuild.html
+   .. _BuildReport: https://docs.unity3d.com/ScriptReference/Build.Reporting.BuildReport.html
