@@ -13,15 +13,11 @@ Once WiX is set up, creating our first installer is only a few clicks away. We h
 
 #. **Integration into your own build pipeline**
 
-   While the option above shows, that the process of generating an installer can be completely automated, you might not want to create an installer for every build you do. In case you use custom build scripts and want to control exactly when an installer is created, WiX for Unity can be controlled through editor scripts as well. Creating an installer is as simple as calling
+   While the option above shows, that the process of generating an installer can be completely automated, you might not want to create an installer for every build you do. In case you use custom build scripts and want to control exactly when an installer is created, WiX for Unity can be controlled through editor scripts as well. Creating an installer is as simple as calling ``WiX.CreateInstaller(report);`` where *'report'* is a `BuildReport`_ object that Unity passes to scripts implementing the `IPostprocessBuildWithReport`_ interface. A complete sample might look like this:
 
-   .. code-block:: java
-    
-      WiX.CreateInstaller(report);
-
-   where *'report'* is a `BuildReport`_ object that Unity passes to scripts implementing the `IPostprocessBuildWithReport`_ interface. A complete sample might look like this:
-
-   .. code-block:: java
+   .. code-block:: C#
+      :linenos:
+      :emphasize-lines: 19
 
       using UnityEditor;
       using UnityEditor.Build;
@@ -29,20 +25,20 @@ Once WiX is set up, creating our first installer is only a few clicks away. We h
 
       public class MyCustomBuildProcessor : IPostprocessBuildWithReport {
 
-          public int callbackOrder { get { return 0; } }
+         public int callbackOrder { get { return 0; } }
 
-          public void OnPostprocessBuild(BuildReport report) {
-              if (!WiX.IsPlatformSupported) {
-                  return;
-              }
+         public void OnPostprocessBuild(BuildReport report) {
+            if (!WiX.IsPlatformSupported) {
+               return;
+            }
 
-              if (report.summary.platform != BuildTarget.StandaloneWindows &&
-                  report.summary.platform != BuildTarget.StandaloneWindows64) {
-                  return;
-              }
+            if (report.summary.platform != BuildTarget.StandaloneWindows &&
+               report.summary.platform != BuildTarget.StandaloneWindows64) {
+               return;
+            }
 
-              WiX.CreateInstaller(report);
-          }
+            WiX.CreateInstaller(report);
+         }
       }
 
    .. _IPostprocessBuildWithReport: https://docs.unity3d.com/ScriptReference/Build.IPostprocessBuildWithReport.OnPostprocessBuild.html

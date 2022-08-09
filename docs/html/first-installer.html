@@ -80,34 +80,50 @@
 <p>WiX for Unity was created with build automation in mind. If you head over to the WiX Settings in the Project settings window. You’ll see the option to <strong>‘Automatically Create Installer on Build’</strong>. Enabling this, will generate an installer every time you do a build in Unity.</p>
 </li>
 <li><p><strong>Integration into your own build pipeline</strong></p>
-<p>While the option above shows, that the process of generating an installer can be completely automated, you might not want to create an installer for every build you do. In case you use custom build scripts and want to control exactly when an installer is created, WiX for Unity can be controlled through editor scripts as well. Creating an installer is as simple as calling</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">WiX</span><span class="p">.</span><span class="na">CreateInstaller</span><span class="p">(</span><span class="n">report</span><span class="p">);</span>
-</pre></div>
-</div>
-<p>where <em>‘report’</em> is a <a class="reference external" href="https://docs.unity3d.com/ScriptReference/Build.Reporting.BuildReport.html">BuildReport</a> object that Unity passes to scripts implementing the <a class="reference external" href="https://docs.unity3d.com/ScriptReference/Build.IPostprocessBuildWithReport.OnPostprocessBuild.html">IPostprocessBuildWithReport</a> interface. A complete sample might look like this:</p>
-<div class="highlight-java notranslate"><div class="highlight"><pre><span></span><span class="n">using</span> <span class="n">UnityEditor</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">UnityEditor</span><span class="p">.</span><span class="na">Build</span><span class="p">;</span>
-<span class="n">using</span> <span class="n">UnityEditor</span><span class="p">.</span><span class="na">Build</span><span class="p">.</span><span class="na">Reporting</span><span class="p">;</span>
+<p>While the option above shows, that the process of generating an installer can be completely automated, you might not want to create an installer for every build you do. In case you use custom build scripts and want to control exactly when an installer is created, WiX for Unity can be controlled through editor scripts as well. Creating an installer is as simple as calling <code class="docutils literal notranslate"><span class="pre">WiX.CreateInstaller(report);</span></code> where <em>‘report’</em> is a <a class="reference external" href="https://docs.unity3d.com/ScriptReference/Build.Reporting.BuildReport.html">BuildReport</a> object that Unity passes to scripts implementing the <a class="reference external" href="https://docs.unity3d.com/ScriptReference/Build.IPostprocessBuildWithReport.OnPostprocessBuild.html">IPostprocessBuildWithReport</a> interface. A complete sample might look like this:</p>
+<div class="highlight-C# notranslate"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre> 1
+ 2
+ 3
+ 4
+ 5
+ 6
+ 7
+ 8
+ 9
+10
+11
+12
+13
+14
+15
+16
+17
+18
+19
+20
+21</pre></div></td><td class="code"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="nn">UnityEditor</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEditor.Build</span><span class="p">;</span>
+<span class="k">using</span> <span class="nn">UnityEditor.Build.Reporting</span><span class="p">;</span>
 
-<span class="kd">public</span> <span class="kd">class</span> <span class="nc">MyCustomBuildProcessor</span> <span class="p">:</span> <span class="n">IPostprocessBuildWithReport</span> <span class="p">{</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyCustomBuildProcessor</span> <span class="p">:</span> <span class="n">IPostprocessBuildWithReport</span> <span class="p">{</span>
 
-    <span class="kd">public</span> <span class="kt">int</span> <span class="n">callbackOrder</span> <span class="p">{</span> <span class="n">get</span> <span class="p">{</span> <span class="k">return</span> <span class="mi">0</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
+   <span class="k">public</span> <span class="kt">int</span> <span class="n">callbackOrder</span> <span class="p">{</span> <span class="k">get</span> <span class="p">{</span> <span class="k">return</span> <span class="m">0</span><span class="p">;</span> <span class="p">}</span> <span class="p">}</span>
 
-    <span class="kd">public</span> <span class="kt">void</span> <span class="nf">OnPostprocessBuild</span><span class="p">(</span><span class="n">BuildReport</span> <span class="n">report</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">WiX</span><span class="p">.</span><span class="na">IsPlatformSupported</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
+   <span class="k">public</span> <span class="k">void</span> <span class="nf">OnPostprocessBuild</span><span class="p">(</span><span class="n">BuildReport</span> <span class="n">report</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">if</span> <span class="p">(!</span><span class="n">WiX</span><span class="p">.</span><span class="n">IsPlatformSupported</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
 
-        <span class="k">if</span> <span class="p">(</span><span class="n">report</span><span class="p">.</span><span class="na">summary</span><span class="p">.</span><span class="na">platform</span> <span class="o">!=</span> <span class="n">BuildTarget</span><span class="p">.</span><span class="na">StandaloneWindows</span> <span class="o">&amp;&amp;</span>
-            <span class="n">report</span><span class="p">.</span><span class="na">summary</span><span class="p">.</span><span class="na">platform</span> <span class="o">!=</span> <span class="n">BuildTarget</span><span class="p">.</span><span class="na">StandaloneWindows64</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span><span class="p">;</span>
-        <span class="p">}</span>
+      <span class="k">if</span> <span class="p">(</span><span class="n">report</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">platform</span> <span class="p">!=</span> <span class="n">BuildTarget</span><span class="p">.</span><span class="n">StandaloneWindows</span> <span class="p">&amp;&amp;</span>
+         <span class="n">report</span><span class="p">.</span><span class="n">summary</span><span class="p">.</span><span class="n">platform</span> <span class="p">!=</span> <span class="n">BuildTarget</span><span class="p">.</span><span class="n">StandaloneWindows64</span><span class="p">)</span> <span class="p">{</span>
+         <span class="k">return</span><span class="p">;</span>
+      <span class="p">}</span>
 
-        <span class="n">WiX</span><span class="p">.</span><span class="na">CreateInstaller</span><span class="p">(</span><span class="n">report</span><span class="p">);</span>
-    <span class="p">}</span>
+<span class="hll">      <span class="n">WiX</span><span class="p">.</span><span class="n">CreateInstaller</span><span class="p">(</span><span class="n">report</span><span class="p">);</span>
+</span>   <span class="p">}</span>
 <span class="p">}</span>
 </pre></div>
-</div>
+</td></tr></table></div>
 </li>
 </ol>
 </div>

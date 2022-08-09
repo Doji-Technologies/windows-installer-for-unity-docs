@@ -16,12 +16,14 @@ When you've imported the package for the first time, it is necessary to install 
    In the wizard, select 'Install recommended version' and download the newest version of the .NET SDK.
    At the time of this writing, the recommended version is `.NET 6.0 <https://dotnet.microsoft.com/en-us/download>`_
 
-   This step is only necessary, if you don't already have a suitable version of .NET SDK installed. If you do, the wizard will not prompt you to install it and start at the next step instead.
+   This step is only necessary, if you don't already have a suitable version of .NET SDK installed.
 
    .. figure:: /_static/images/wizard_0.jpg
       :width: 60%
       :align: center
       :alt: WiX Wizard .NET Installation
+
+   In case the wizard does not advance to the next step after installing the .NET SDK, try restarting your machine. 
 
 #. **Installing WiX**
 
