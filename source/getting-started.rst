@@ -23,7 +23,8 @@ When you've imported the package for the first time, it is necessary to install 
       :align: center
       :alt: WiX Wizard .NET Installation
 
-   In case the wizard does not advance to the next step after installing the .NET SDK, try restarting your machine. 
+   .. note::
+      In case the wizard does not advance to the next step after installing the .NET SDK, or you are getting an error that "*'wix' is not recognized as an internal or external command*" at a later point, please try restarting your machine.
 
 #. **Installing WiX**
 
