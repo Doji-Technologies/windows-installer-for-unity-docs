@@ -9,10 +9,10 @@ to easily create .msi installation packages.
 
 Minimal knowledge required
     MSI (Windows Installer) is a complex technology.
-    While this asset does use WiX, an open source framework that simplifies creating installation
-    packages, WiX itself has a steep learning curve. Creating even a basic installer that suits
+    Under the hood, this asset uses WiX, an open source framework that simplifies creating installation
+    packages. But WiX itself also has a steep learning curve. Creating an installer that suits
     your needs takes someone with no prior experience a few weeks of learning the ins and outs
-    of installers. WiX for Unity takes away that complexity, so you can focus on building your
+    of how MSI installers work. WiX for Unity takes away that complexity, so you can focus on building your
     product instead of dealing with installer technology.
 
 Fully automatable
@@ -23,7 +23,7 @@ Fully automatable
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Overview:
+   :caption: Overview
 
    Introduction <self>
    /msi
@@ -31,10 +31,17 @@ Fully automatable
 .. toctree::
    :maxdepth: 2
    :hidden:
-   :caption: Getting Started:
+   :caption: Getting Started
 
    /getting-started
    /first-installer
+
+.. toctree::
+   :maxdepth: 2
+   :hidden:
+   :caption: Advanced
+
+   /limitations
 
 FAQ
 ===
@@ -42,7 +49,7 @@ FAQ
 Does my application need an installer?
 --------------------------------------
 
-    The truth is, most traditional Unity applications won't need one. For gaming applications, you will probably end up uploading to a store like Steam, which already handles packaging and distribution. 
+    The truth is, most traditional Unity applications won't need one. For gaming applications, you will probably end up uploading to a platform like Steam or itch.io anyway. Those already handle packaging and distribution for you. 
 
     Having an installer is mostly useful for enterprise applications, which are nowadays increasingly created with Unity.
 
@@ -57,7 +64,7 @@ Does having an installer remove the Windows Security popup that can appear when 
     *  Code-sign your application by purchasing a certificate from a `Certificate Authority`_.
     *  Get your application out to enough users so SmartScreen eventually considers it safe.
 
-    According to  `this thread <https://forum.unity.com/threads/windows-10-alert-on-some-machines.427969/>`_ the message can still pop up even when you've code-signed your application. So signing alone seems to be not enough.
+    According to `this thread <https://forum.unity.com/threads/windows-10-alert-on-some-machines.427969/>`_ the message can still pop up even when you've code-signed your application. So signing alone seems to be not enough.
 
     .. _Microsoft SmartScreen: https://docs.microsoft.com/en-us/windows/security/threat-protection/microsoft-defender-smartscreen/microsoft-defender-smartscreen-overview
     .. _Certificate Authority: https://docs.microsoft.com/en-us/windows-hardware/drivers/dashboard/get-a-code-signing-certificate#extended-validation-code-signing-certificates

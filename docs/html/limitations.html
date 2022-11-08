@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Index &mdash; Windows Installer for Unity 2022 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <title>Limitations &mdash; Windows Installer for Unity 2022 documentation</title><link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
   <!--[if lt IE 9]>
     <script src="_static/js/html5shiv.min.js"></script>
@@ -14,8 +14,9 @@
         <script src="_static/doctools.js"></script>
         <script src="_static/language_data.js"></script>
     <script src="_static/js/theme.js"></script>
-    <link rel="index" title="Index" href="#" />
-    <link rel="search" title="Search" href="search.html" /> 
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="prev" title="Creating your first installer" href="first-installer.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -44,8 +45,8 @@
 <li class="toctree-l1"><a class="reference internal" href="first-installer.html">Creating your first installer</a></li>
 </ul>
 <p class="caption"><span class="caption-text">Advanced</span></p>
-<ul>
-<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Limitations</a></li>
 </ul>
 
         </div>
@@ -62,8 +63,9 @@
           <div role="navigation" aria-label="Page navigation">
   <ul class="wy-breadcrumbs">
       <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
-      <li>Index</li>
+      <li>Limitations</li>
       <li class="wy-breadcrumbs-aside">
+            <a href="_sources/limitations.rst.txt" rel="nofollow"> View page source</a>
       </li>
   </ul>
   <hr/>
@@ -71,17 +73,32 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-
-<h1 id="index">Index</h1>
-
-<div class="genindex-jumpbox">
- 
+  <div class="section" id="limitations">
+<h1>Limitations<a class="headerlink" href="#limitations" title="Permalink to this headline"></a></h1>
+<p>MSI usually packs all source files into a single, self-contained .msi file by using .cab archives. However, the .cab archive format has some size limitations:</p>
+<ul class="simple">
+<li><p>No one file in a CAB can exceed 2GB</p></li>
+<li><p>Maximum size of all files in one folder (compressed) 2GB</p></li>
+<li><p>Maximum size of a CAB file (compressed) 2GB</p></li>
+<li><p>Maximum number of files in a single CAB 64K:</p></li>
+</ul>
+<p>(<a class="reference external" href="http://www.msifaq.com/a/1043.htm">Source</a>)</p>
+<p>Especially with media-rich Unity applications, it’s pretty easy to hit the 2GB limit, which results in the following behaviour:</p>
+<p>Installers larger than 2GB can be created, but those will not be a single, self-contained .msi file. Creating an installer larger than 2GB will instead result in an installer package that consists of more than a single file. Here is an image of what the installer files will look like:</p>
+<img alt="MSI Installation Files" src="_images/loose-files-msi.jpg" />
+<p>Users will have to download both the .msi file as well as the PFiles64/PFiles folder in order to install the application. This is a limitation of the .msi format itself and can not be worked around.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>You might have noticed, that even single files larger than 2GB are not natively supported by MSI. But certain assets of your Unity build (Lightmaps, Texture Atlases, etc.) might easily exceed 2GB. Windows Installer for Unity works around this limitation by automatically splitting such large files at build time and creating a custom action which merges these split files back together at installation time.</p>
+</div>
 </div>
 
 
            </div>
           </div>
-          <footer>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="first-installer.html" class="btn btn-neutral float-left" title="Creating your first installer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
 
   <hr/>
 

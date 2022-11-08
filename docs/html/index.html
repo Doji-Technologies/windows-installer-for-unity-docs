@@ -35,15 +35,19 @@
   </form>
 </div>
         </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
-              <p class="caption"><span class="caption-text">Overview:</span></p>
+              <p class="caption"><span class="caption-text">Overview</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Introduction</a></li>
 <li class="toctree-l1"><a class="reference internal" href="msi.html">The Key Benefits of MSI</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Getting Started:</span></p>
+<p class="caption"><span class="caption-text">Getting Started</span></p>
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="getting-started.html">Initial Setup</a></li>
 <li class="toctree-l1"><a class="reference internal" href="first-installer.html">Creating your first installer</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Advanced</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="limitations.html">Limitations</a></li>
 </ul>
 
         </div>
@@ -76,15 +80,17 @@
 to easily create .msi installation packages.</p>
 <dl class="simple">
 <dt>Minimal knowledge required</dt><dd><p>MSI (Windows Installer) is a complex technology.
-While this asset does use WiX, an open source framework that simplifies creating installation
-packages, WiX itself has a steep learning curve. Creating even a basic installer that suits
+Under the hood, this asset uses WiX, an open source framework that simplifies creating installation
+packages. But WiX itself also has a steep learning curve. Creating an installer that suits
 your needs takes someone with no prior experience a few weeks of learning the ins and outs
-of installers. WiX for Unity takes away that complexity, so you can focus on building your
+of how MSI installers work. WiX for Unity takes away that complexity, so you can focus on building your
 product instead of dealing with installer technology.</p>
 </dd>
 <dt>Fully automatable</dt><dd><p>Developed with build automation in mind, WiX for Unity can be completely controlled via editor scripting.</p>
 </dd>
 </dl>
+<div class="toctree-wrapper compound">
+</div>
 <div class="toctree-wrapper compound">
 </div>
 <div class="toctree-wrapper compound">
@@ -95,7 +101,7 @@ product instead of dealing with installer technology.</p>
 <div class="section" id="does-my-application-need-an-installer">
 <h2>Does my application need an installer?<a class="headerlink" href="#does-my-application-need-an-installer" title="Permalink to this headline"></a></h2>
 <blockquote>
-<div><p>The truth is, most traditional Unity applications won’t need one. For gaming applications, you will probably end up uploading to a store like Steam, which already handles packaging and distribution.</p>
+<div><p>The truth is, most traditional Unity applications won’t need one. For gaming applications, you will probably end up uploading to a platform like Steam or itch.io anyway. Those already handle packaging and distribution for you.</p>
 <p>Having an installer is mostly useful for enterprise applications, which are nowadays increasingly created with Unity.</p>
 <p>You can read more about the benefits of MSI for this use case <a class="reference internal" href="msi.html"><span class="doc">here</span></a>.</p>
 </div></blockquote>
@@ -108,7 +114,7 @@ product instead of dealing with installer technology.</p>
 <li><p>Code-sign your application by purchasing a certificate from a <a class="reference external" href="https://docs.microsoft.com/en-us/windows-hardware/drivers/dashboard/get-a-code-signing-certificate#extended-validation-code-signing-certificates">Certificate Authority</a>.</p></li>
 <li><p>Get your application out to enough users so SmartScreen eventually considers it safe.</p></li>
 </ul>
-<p>According to  <a class="reference external" href="https://forum.unity.com/threads/windows-10-alert-on-some-machines.427969/">this thread</a> the message can still pop up even when you’ve code-signed your application. So signing alone seems to be not enough.</p>
+<p>According to <a class="reference external" href="https://forum.unity.com/threads/windows-10-alert-on-some-machines.427969/">this thread</a> the message can still pop up even when you’ve code-signed your application. So signing alone seems to be not enough.</p>
 </div></blockquote>
 </div>
 </div>
