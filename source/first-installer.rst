@@ -1,4 +1,4 @@
-Creating your first installer
+Creating Your First Installer
 =============================
 
 Once WiX is set up, creating our first installer is only a few clicks away. We have a few options for this.
