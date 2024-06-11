@@ -18,7 +18,7 @@ Minimal knowledge required
 Fully automatable
     Developed with build automation in mind, WiX for Unity can be completely controlled via editor scripting.
 
-.. _Windows Installer for Unity: https://assetstore.unity.com/packages/slug/215960
+.. _Windows Installer for Unity: https://assetstore.unity.com/packages/tools/utilities/windows-installer-for-unity-215960?aid=1101l3w5RJ&pubref=docs
 
 .. toctree::
    :maxdepth: 2
@@ -56,8 +56,8 @@ Does my application need an installer?
     You can read more about the benefits of MSI for this use case :doc:`here </msi>`.
 
 
-Does having an installer remove the Windows Security popup that can appear when running a Unity application on a different computer?
-------------------------------------------------------------------------------------------------------------------------------------
+Does having an installer remove the Windows Security popup that can appear when running a Unity application?
+------------------------------------------------------------------------------------------------------------
 
     Having an installer does **not** solve the issue that `Microsoft SmartScreen`_ might notify its users with a message that your app is potentially unsafe. The general advice on how to solve this is, that you should both:
 
